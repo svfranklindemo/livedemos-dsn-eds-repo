@@ -15,7 +15,9 @@ import {
   getMetadata,
   loadScript,
   toClassName,
-  toCamelCase
+  toCamelCase,
+  decorateDefaultBlock,
+  hideSidekick
 } from './aem.js';
 import { picture, source, img } from './dom-helpers.js';
 
@@ -339,6 +341,7 @@ async function loadEager(doc) {
   } catch (e) {
     // ignore
   }
+
   decorateTemplateAndTheme();
   renderWBDataLayer();
   const main = doc.querySelector('main');
@@ -514,6 +517,7 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
   ensureConsentModalHandled();
+  
 }
 
 function isDMOpenAPIUrl(src) {
